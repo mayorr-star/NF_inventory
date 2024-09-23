@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Product form</title>
+    </head>
+    <body>
+        <main>
+            <form action="/add-new-produce" method="post">
+                <div class="input_control">
+                    <label for="cmName">Common Name: </label>
+                    <input type="text" name="cmName" id="cmName" placeholder="...cabbage">
+                </div>
+                <div class="input_control">
+                    <label for="sciName">Scientific Name: </label>
+                    <input type="text" name="sciName" id="scName" placeholder="...cabbage">
+                </div>
+                <div class="input_control">
+                    <label for="nunmItems">Number: </label>
+                    <input type="number" name="num" id="num">
+                </div>
+                <div class="input_control">
+                    <label for="price">Number: </label>
+                    <input type="nunmber" name="price" id="price">
+                </div>
+                <div class="input_control">
+                    <select name="category">
+                        <option value="all" selected>All</option>
+                        <option value="fruits">Fruits</option>
+                        <option value="vegetables">Vegetables</option>
+                        <option value="poultry">Poultry</option>
+                        <option value="livestock">Livestock</option>
+                        <option value="legumes">Legumes</option>
+                    </select>
+                </div>
+                <div class="input_control">
+                    <select name="category">
+                        <option value="bag" selected>Bag</option>
+                    </select>
+                </div>
+            </form>
+        </main>
+        <%- include('partials/footer') %>
+    </body>
+</html>
