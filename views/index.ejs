@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8" />
+    <title>Nana Farms</title>
+  </head>
+  <body>
+    <navbar>
+      <div class="cm_logo">
+        <p>Nana Farms</p>
+        <img src="" alt="Nana Farms logo" />
+      </div>
+      <a href="/add-new-produce">
+        <button type="button" class="nav_btn">Add new item</button>
+      </a>
+      <form action="/search/:<%=produce.name%>/:<%=produce.id%>" method="get">
+        <input
+          type="search"
+          name="search"
+          id="search"
+          placeholder="...apple"
+          aria-label="search"
+        />
+        <button type="submit">Search</button>
+      </form>
+    </navbar>
+    <header>
+      <h1>Inventory</h1>
+      <div class="filter_sort">
+        <select name="category">
+          <% categories.forEach((category) => { %>
+          <option value=<%= category.category %>
+            ><%= category.category %>
+          </option>
+          <% }); %>
+        </select>
+        <select name="sort">
+          <option value="name" selected>Name</option>
+          <option value="count">Count</option>
+          <option value="land">Land</option>
+        </select>
+      </div>
+    </header>
+    <main>
+      <table>
+        <thead>
+          <tr>
+            <th>Common name</th>
+            <th>Scientific name</th>
+            <th>Count</th>
+            <th>Unit</th>
+            <th>Price</th>
+            <th>Category</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% produce.forEach(item => { %>
+          <tr>
+            <td><%= item.common_name %></td>
+            <td><%= item.scientific_name %></td>
+            <td><%= item.count %></td>
+            <td><%= item.unit %></td>
+            <td><%= item.price %></td>
+            <td><%= item.category %></td>
+            <td>Delete</td>
+          </tr>
+          <% }); %>
+        </tbody>
+      </table>
+    </main>
+    <%- include('partials/footer', {year: year}); %>
+  </body>
+</html>
