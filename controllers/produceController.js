@@ -6,12 +6,17 @@ const currentYear = getCurrentYear();
 const getAllProduce = asyncHandler(async(req, res)=> {
     const farmProduce = await db.fecthAllProduce();
     const categories = await db.getCategories();
+    
+    if(!farmProduce || !categories) {
+        throw new NotFoundError("Not found");
+    }
     res.render('index', {categories: categories, produce: farmProduce, year: currentYear});
 })
 
 const createNewProduce = asyncHandler(async(req, res)=> {
-    const { common_name, scientific_name, count, unit, price} = req.body;
-    await db.insertProduceItem(common_name, scientific_name, count, unit, price);
+    const { cmName, sciName, numItems, unit, price, area} = req.body;
+    console.log(cmName, sciName, numItems, unit, price, area);
+    await db.insertProduceItem(cmName, sciName, numItems, unit, price);
     await db.insertLandArea(area);
     res.redirect('/');
     console.log('produce created');
@@ -32,7 +37,8 @@ const updateProduce = asyncHandler(async(req, res)=> {
 })
 
 const getNewItemForm = asyncHandler(async(req, res) => {
-    res.render('form', {produce});
+    const categories = await db.getCategories();
+    res.render('produceForm', {year: currentYear, categories: categories});
 })
 
 const getProduce = asyncHandler(async(req, res) => {
