@@ -19,13 +19,13 @@ const insertProduceItem = async (
   price
 ) => {
   await pool.query(
-    "INSERT INTO produce (common_name scientific_name, count, unit) VALUES ($1, $2, $3, $4, $5)",
+    "INSERT INTO produce (common_name, scientific_name, count, unit, price) VALUES ($1, $2, $3, $4, $5)",
     [common_name, scientific_name, count, unit, price]
   );
 };
 
 const insertLandArea = async (landArea) => {
-  await pool.query("INSERT INTO land (area) VALUES ($1)", [landArea]);
+  await pool.query("INSERT INTO landarea (area_acres) VALUES ($1)", [landArea]);
 };
 
 const deleteProduceItem = async (produceId) => {
