@@ -2,44 +2,44 @@ const { Client } = require("pg");
 
 const SQL = `
     CREATE TABLE IF NOT EXISTS produce (id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY, common_name VARCHAR(255),
-    scientific_name VARCHAR(255), count INTEGER, unit VARCHAR(25) DEFAULT 'bags');
+    scientific_name VARCHAR(255), count INTEGER, unit VARCHAR(25) DEFAULT 'bags', price REAL);
 
     CREATE TABLE IF NOT EXISTS categories (id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY, category VARCHAR(25));
 
-    CREATE TABLE IF NOT EXISTS landarea (id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY, area_acres NUMERIC(6, 2));
+    CREATE TABLE IF NOT EXISTS landarea (id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY, area_acres REAL);
 
     CREATE TABLE IF NOT EXISTS produce_category (produce_id INTEGER , category_id INTEGER);
 
     CREATE TABLE IF NOT EXISTS produce_land (produce_id INTEGER , land_id INTEGER);
 
-    INSERT INTO produce (common_name, scientific_name, count) VALUES 
-    ('Cabbage', 'Brassica oleracea', 3500),
-    ('Tomato', 'Solanum lycopersicum', 5480),
-    ('Carrot', 'Daucus carota', 559),
-    ('Mango', 'Manifera indica', 3200),
-    ('Orange', 'Citrus x sinensis', 5000),
-    ('African pear', 'Dacryodes edulis', 687),
-    ('Turkey', 'Meleagris gallopavo', 345),
-    ('Lettuce', 'Lactuca sativa', 899),
-    ('Spinach', 'Spinacia oleracea', 700),
-    ('Cow', 'Bos tauras', 75),
-    ('Goat', 'Capra aegagrus hircus', 233),
-    ('Guinea fowl', 'Numida meleagris', 785),
-    ('Pig', 'Sus scrofa domesticus', 357),
-    ('Beans', 'Phaseolus vulgaris', 3478),
-    ('Groundnut', 'Arachis hypogaea', 12005),
-    ('Coconut', 'Cocos nucifera', 500),
-    ('Pepper', 'Capsicum annuum', 12045),
-    ('Garden egg', 'Solanum melongena', 478),
-    ('Onion', 'Allium cepa', 700),
-    ('Garlic', 'Alium sativum', 720),
-    ('Watermelon', 'Cirullus lanatus', 568),
-    ('Pineapple', 'Ananas comosus', 869),
-    ('Cowpea', 'Vigna unguiculata', 345),
-    ('Apple', 'Malus pumila', 2500),
-    ('Guava', 'Psidium guajava', 457),
-    ('Asparagus', 'Asparagus officinalis', 236),
-    ('Grape', 'Vitis vinifera', 500);
+    INSERT INTO produce (common_name, scientific_name, count, price) VALUES 
+    ('Cabbage', 'Brassica oleracea', 3500, 12.50),
+    ('Tomato', 'Solanum lycopersicum', 5480, 15.30),
+    ('Carrot', 'Daucus carota', 559, 17.00),
+    ('Mango', 'Manifera indica', 3200, 6.10),
+    ('Orange', 'Citrus x sinensis', 5000, 6.20),
+    ('African pear', 'Dacryodes edulis', 687, 21.00),
+    ('Turkey', 'Meleagris gallopavo', 345, 250.21),
+    ('Lettuce', 'Lactuca sativa', 899, 13.00),
+    ('Spinach', 'Spinacia oleracea', 700, 11.00),
+    ('Cow', 'Bos tauras', 75, 300),
+    ('Goat', 'Capra aegagrus hircus', 233, 250.10),
+    ('Guinea fowl', 'Numida meleagris', 785, 173.24),
+    ('Pig', 'Sus scrofa domesticus', 357, 259.13),
+    ('Beans', 'Phaseolus vulgaris', 3478, 16.00),
+    ('Groundnut', 'Arachis hypogaea', 12005, 7.00),
+    ('Coconut', 'Cocos nucifera', 500, 15.00),
+    ('Pepper', 'Capsicum annuum', 12045, 6.00),
+    ('Garden egg', 'Solanum melongena', 478, 13.21),
+    ('Onion', 'Allium cepa', 700, 5.00),
+    ('Garlic', 'Alium sativum', 720, 5.00),
+    ('Watermelon', 'Cirullus lanatus', 568, 16.00),
+    ('Pineapple', 'Ananas comosus', 869, 14.32),
+    ('Cowpea', 'Vigna unguiculata', 345, 12.12),
+    ('Apple', 'Malus pumila', 2500, 6.00),
+    ('Guava', 'Psidium guajava', 457, 7.00),
+    ('Asparagus', 'Asparagus officinalis', 236, 8.00),
+    ('Grape', 'Vitis vinifera', 500, 8.00);
 
     INSERT INTO categories (category) VALUES 
     ('Vegetable'),
