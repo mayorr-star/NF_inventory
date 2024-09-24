@@ -1,15 +1,45 @@
 const pool = require("./pool");
 
-const fecthAllProduce = async () => {
+const getAllProduce = async () => {
   const { rows } = await pool.query(
     "SELECT produce.common_name, produce.scientific_name, produce.count, produce.unit, produce.price, categories.category, landarea.area_acres FROM produce INNER JOIN produce_category ON produce.id = produce_category.produce_id INNER JOIN categories ON produce_category.category_id = categories.id INNER JOIN produce_land ON produce_land.produce_id = produce.id INNER JOIN landarea ON produce_land.land_id = landarea.id"
   );
   return rows;
 };
+
 const getCategories = async () => {
   const { rows } = await pool.query("SELECT category FROM categories");
   return rows;
-}
+};
+
+const getLandSizes = async () => {
+  const { rows } = await pool.query("SELECT area_acres FROM landarea");
+  return rows;
+};
+
+const getProduceId = async (name) => {
+  const { rows } = await pool.query(
+    "SELECT id FROM produce WHERE common_name = $1",
+    [name]
+  );
+  return rows;
+};
+
+const getLandId = async (size) => {
+  const { rows } = await pool.query(
+    "SELECT id FROM landarea WHERE area_acres = $1",
+    [size]
+  );
+  return rows;
+};
+
+const getCategoryId = async (category) => {
+  const { rows } = await pool.query(
+    "SELECT id FROM categories WHERE category = $1",
+    [category]
+  );
+  return rows;
+};
 
 const insertProduceItem = async (
   common_name,
@@ -24,8 +54,18 @@ const insertProduceItem = async (
   );
 };
 
-const insertLandArea = async (landArea) => {
-  await pool.query("INSERT INTO landarea (area_acres) VALUES ($1)", [landArea]);
+const insertProduceIdLandId = async (produceId, landId) => {
+  await pool.query("INSERT INTO produce_land VALUES ($1, $2)", [
+    produceId,
+    landId,
+  ]);
+};
+
+const insertProduceIdCategoryId = async (produceId, categoryId) => {
+  await pool.query("INSERT INTO produce_category VALUES ($1, $2)", [
+    produceId,
+    categoryId,
+  ]);
 };
 
 const deleteProduceItem = async (produceId) => {
@@ -37,10 +77,15 @@ const updateProduceItem = async (produceId) => {
 };
 
 module.exports = {
-  fecthAllProduce,
-  insertLandArea,
+  getAllProduce,
+  getCategories,
+  getLandSizes,
+  getLandId,
+  getProduceId,
+  getCategoryId,
+  insertProduceIdLandId,
+  insertProduceIdCategoryId,
   insertProduceItem,
   deleteProduceItem,
   updateProduceItem,
-  getCategories
 };
