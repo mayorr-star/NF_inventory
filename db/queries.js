@@ -2,7 +2,7 @@ const pool = require("./pool");
 
 const fecthAllProduce = async () => {
   const { rows } = await pool.query(
-    "SELECT produce.common_name, produce.scientific_name, produce.count, produce.unit, categories.category, landarea.area_acres FROM produce INNER JOIN produce_category ON produce.id = produce_category.produce_id INNER JOIN categories ON produce_category.category_id = categories.id INNER JOIN produce_land ON produce_land.produce_id = produce.id INNER JOIN landarea ON produce_land.land_id = landarea.id"
+    "SELECT produce.common_name, produce.scientific_name, produce.count, produce.unit, produce.price, categories.category, landarea.area_acres FROM produce INNER JOIN produce_category ON produce.id = produce_category.produce_id INNER JOIN categories ON produce_category.category_id = categories.id INNER JOIN produce_land ON produce_land.produce_id = produce.id INNER JOIN landarea ON produce_land.land_id = landarea.id"
   );
   return rows;
 };
