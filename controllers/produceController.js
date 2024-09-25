@@ -1,7 +1,7 @@
 const asyncHandler = require('express-async-handler');
 const db = require('../db/queries');
 const getCurrentYear = require('../utilis/year');
-const NotFoundErrorClass = require('../utilis/errorhandling/errors/NotFoundError');
+const NotFoundError = require('../utilis/errorhandling/errors/NotFoundError');
 
 const currentYear = getCurrentYear();
 
@@ -10,9 +10,9 @@ const getAllProduce = asyncHandler(async(req, res)=> {
     const categories = await db.getCategories();
     
     if(!farmProduce) {
-        throw new NotFoundErrorClass("Farm produce not found!");
+        throw new NotFoundError("Farm produce not found!");
     } else if (!categories) {
-        throw new NotFoundErrorClass('Categories not found!');
+        throw new NotFoundError('Categories not found!');
     }
 
     res.render('index', {categories: categories, produce: farmProduce, year: currentYear});
@@ -47,9 +47,9 @@ const getNewItemForm = asyncHandler(async(req, res) => {
     const categories = await db.getCategories();
     const landSizes = await db.getLandSizes();
     if (!categories) {
-        throw new NotFoundErrorClass('Form not found!');
+        throw new NotFoundError('Form not found!');
     } else if (!landSizes) {
-        throw new NotFoundErrorClass('Land sizes not found!');
+        throw new NotFoundError('Land sizes not found!');
     }
     res.render('produceForm', {year: currentYear, categories: categories, landSizes: landSizes});
 })
