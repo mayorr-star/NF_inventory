@@ -7,7 +7,7 @@
   </head>
   <body>
     <main>
-      <form action="/add-new-produce" method="post">
+      <form action="/produce/add-new-produce" method="post">
         <div class="input_control">
           <label for="cmName">Common Name: </label>
           <input
@@ -27,12 +27,11 @@
           />
         </div>
         <div class="input_control">
-          <label for="area">land size: </label>
-          <input
-            type="number"
-            name="area"
-            id="area"
-          />
+        <select name="land_size">
+          <% landSizes.forEach(landSize => { %>
+            <option value=<%= landSize.area_acres%>><%= landSize.area_acres %></option>
+          <% }) %>
+        </select>
         </div>
         <div class="input_control">
           <label for="numItems">Quantity: </label>
