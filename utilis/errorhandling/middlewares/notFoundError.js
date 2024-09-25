@@ -1,7 +1,7 @@
 const handleNotFoundError = (err, req, res, next) => {
     if (err.name === "NotFoundError") {
-      console.log(err);
-      res.status(404).send("Not found");
+      console.log(err.statusCode);
+      res.status(err.statusCode).send(err.message);
     } else {
       next();
     }
