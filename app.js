@@ -2,6 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const path = require('path');
 const produceRouter = require("./routes/produceRouter");
+const indexRouter = require("./routes/index");
 const handleNotFoundError = require("./utilis/errorhandling/middlewares/notFoundError");
 
 const app = express();
@@ -12,7 +13,8 @@ app.set('view engine','ejs');
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 
-app.use("/", produceRouter);
+app.use("/produce", produceRouter);
+app.use("/", indexRouter);
 
 app.use(handleNotFoundError);
 
