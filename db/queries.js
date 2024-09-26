@@ -25,14 +25,9 @@ const getProduceId = async (name) => {
   return rows;
 };
 
-// const getProduce = async (produceId) => {
-//   const { rows } = await pool.query("SELECT * FROM categories");
-//   console.log(rows)
-//   return rows;
-// }
 const getProduce = async (produceId) => {
   const { rows } = await pool.query(
-    "SELECT produce.common_name, produce.scientific_name, produce.count, produce.unit, produce.price, categories.category, landarea.area_acres FROM produce INNER JOIN produce_category ON produce_category.produce_id = produce.id INNER JOIN categories ON produce_category.category_id = categories.id INNER JOIN produce_land ON produce.id = produce_land.produce_id INNER JOIN landarea ON landarea.id = produce_land.land_id WHERE produce.id = $1",
+    "SELECT produce.id, produce.common_name, produce.scientific_name, produce.count, produce.unit, produce.price, categories.category, landarea.area_acres FROM produce INNER JOIN produce_category ON produce_category.produce_id = produce.id INNER JOIN categories ON produce_category.category_id = categories.id INNER JOIN produce_land ON produce.id = produce_land.produce_id INNER JOIN landarea ON landarea.id = produce_land.land_id WHERE produce.id = $1",
     [produceId]
   );
   return rows;
@@ -82,7 +77,7 @@ const insertProduceIdCategoryId = async (produceId, categoryId) => {
 };
 
 const deleteProduceItem = async (produceId) => {
-  await pool.query("SELECT * FROM produce WHERE id = $1", [produceId]);
+  await pool.query("DELETE FROM ONLY produce WHERE id = $1", [produceId]);
 };
 
 const updateProduceItem = async (produceId) => {
