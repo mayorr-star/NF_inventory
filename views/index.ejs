@@ -6,25 +6,7 @@
     <title>Nana Farms</title>
   </head>
   <body>
-    <navbar>
-      <div class="cm_logo">
-        <p>Nana Farms</p>
-        <img src="" alt="Nana Farms logo" />
-      </div>
-      <a href="/produce/add-new-produce">
-        <button type="button" class="nav_btn">Add new item</button>
-      </a>
-      <form action="/search/:<%=produce.name%>/:<%=produce.id%>" method="get">
-        <input
-          type="search"
-          name="search"
-          id="search"
-          placeholder="...apple"
-          aria-label="search"
-        />
-        <button type="submit">Search</button>
-      </form>
-    </navbar>
+    <%- include('partials/navbar')%>
     <header>
       <h1>Inventory</h1>
       <div class="filter_sort">
@@ -40,7 +22,10 @@
           <option value="count">Count</option>
           <option value="land">Land</option>
         </select>
-      </div>
+      </div> 
+      <a href="/produce/add-new-produce">
+        <button type="button" class="nav_btn">Add new item</button>
+      </a>
     </header>
     <main>
       <table>
@@ -52,7 +37,6 @@
             <th>Unit</th>
             <th>Price</th>
             <th>Category</th>
-            <th>Action</th>
           </tr>
         </thead>
         <tbody>
@@ -68,7 +52,6 @@
             <td><%= item.unit %></td>
             <td><%= item.price %></td>
             <td><%= item.category %></td>
-            <td>Delete</td>
           </tr>
           <% }); %>
         </tbody>
