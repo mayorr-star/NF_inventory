@@ -4,6 +4,7 @@ const path = require('path');
 const produceRouter = require("./routes/produceRouter");
 const indexRouter = require("./routes/index");
 const handleNotFoundError = require("./utilis/errorhandling/middlewares/notFoundError");
+const handleGlobalError = require("./utilis/errorhandling/middlewares/globalError");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -17,5 +18,6 @@ app.use("/produce", produceRouter);
 app.use("/", indexRouter);
 
 app.use(handleNotFoundError);
+app.use(handleGlobalError);
 
 app.listen(PORT, () => console.log(`Server running on ${PORT}`));
