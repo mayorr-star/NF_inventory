@@ -58,7 +58,11 @@
         <tbody>
           <% produce.forEach(item => { %>
           <tr>
-            <td><%= item.common_name %></td>
+            <td>
+              <a href="/produce/<%= item.id %>">
+                <%= item.common_name %>
+              </a>
+            </td>
             <td><%= item.scientific_name %></td>
             <td><%= item.count %></td>
             <td><%= item.unit %></td>
