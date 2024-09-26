@@ -20,6 +20,14 @@
                         <p>Category: <%= produce.category %></p>
                     </div>
                 </section>
+                <section class="forms">
+                    <form action="delete/<%= produce.id %>" method="post">
+                        <button type="submit">Delete</button>
+                    </form>
+                    <form action="/update/<%= produce.id %>" method="post">
+                        <button type="submit">Update</button>
+                    </form>
+                </section>
             </main>
             <%- include('partials/footer', {year: year}) %>
         </body>
