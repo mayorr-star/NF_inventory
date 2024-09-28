@@ -80,8 +80,26 @@ const deleteProduceItem = async (produceId) => {
   await pool.query("DELETE FROM ONLY produce WHERE id = $1", [produceId]);
 };
 
-const updateProduceItem = async (produceId) => {
-  await pool.query("SELECT * produce  WHERE id = $1", [produceId]);
+const updateProduceItem = async (
+  cmName,
+  sciName,
+  count,
+  price,
+  produceId,
+  categoryId,
+  landId
+) => {
+  await Promise.all([
+    pool.query(
+      "UPDATE produce SET common_name = $1, scientific_name = $2, count = $3, price = $4  WHERE id = $5",
+      [cmName, sciName, count, price, produceId]
+    ),
+    pool.query(
+      "UPDATE produce_category SET category_id = $1 WHERE produce_id = $2",
+      [categoryId, produceId]
+    ),
+    pool.query("UPDATE produce_land SET land_id = $1 WHERE produce_id = $2", [landId, produceId])
+  ]);
 };
 
 module.exports = {
