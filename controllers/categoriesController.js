@@ -32,10 +32,20 @@ const validateCategory = [
     .withMessage("Category must be at least 2 charatcers long"),
 ];
 
-const createCategory = [validateCategory, asyncHandler(async (req, res) => {
-  const { category } = req.body;
-  const errors = validationResult(req);
-  await db.insertCategory(category);
-})];
+const createCategory = [
+  validateCategory,
+  asyncHandler(async (req, res) => {
+    const { category } = req.body;
+    const errors = validationResult(req);
+    await db.insertCategory(category);
+    res.redirect("/categories");
+  }),
+];
 
-module.exports = { getCategories, getCategoryForm, createCategory };
+const deleteCategory = asyncHandler(async (req, res) => {
+  const { categoryId } = req.params;
+  await db.deleteCategory(categoryId);
+  res.redirect("/categories")
+});
+
+module.exports = { getCategories, getCategoryForm, createCategory, deleteCategory };
