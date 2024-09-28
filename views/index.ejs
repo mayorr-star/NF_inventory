@@ -6,7 +6,7 @@
     <title>Nana Farms</title>
   </head>
   <body>
-    <%- include('partials/navbar')%>
+    <%- include('partials/navbar', {produce: produce})%>
     <header>
       <h1>Inventory</h1>
       <div class="filter_sort">
@@ -23,7 +23,7 @@
           <option value="land">Land</option>
         </select>
       </div> 
-      <a href="/produce/add-new-produce">
+      <a href="/produce/form/add-new-produce">
         <button type="button" class="nav_btn">Add new item</button>
       </a>
     </header>
