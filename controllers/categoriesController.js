@@ -17,4 +17,8 @@ const getCategories = asyncHandler(async (req, res) => {
   });
 });
 
-module.exports = { getCategories };
+const getCategoryForm = (req, res) => {
+  res.render("categoryForm");
+}
+
+module.exports = { getCategories, getCategoryForm };
