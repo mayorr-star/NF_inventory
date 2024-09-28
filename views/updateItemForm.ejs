@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Update Farm Produce</title>
+  </head>
+  <body>
+    <header>
+        <h1>Update <%= produce[0].common_name %> Details</h1>
+    </header>
+    <main>
+      <form action="/produce/update/<%= produce[0].id %>" method="post">
+        <div class="input_control">
+          <label for="cmName">Common Name: </label>
+          <input
+            type="text"
+            name="cmName"
+            id="cmName"
+            placeholder="...cabbage"
+            value="<%= produce[0].common_name %>"
+          />
+        </div>
+        <div class="input_control">
+          <label for="sciName">Scientific Name: </label>
+          <input
+            type="text"
+            name="sciName"
+            id="scName"
+            placeholder="...Brassica oleracea"
+            value="<%= produce[0].scientific_name %>"
+          />
+        </div>
+        <div class="input_control">
+        <select name="land_size">
+          <% landSizes.forEach(landSize => { %>
+            <option value=<%= landSize.area_acres%>><%= landSize.area_acres %></option>
+          <% }) %>
+        </select>
+        </div>
+        <div class="input_control">
+          <label for="numItems">Quantity: </label>
+          <input type="number" name="numItems" id="numItems" value="<%= produce[0].count %>"/>
+        </div>
+        <div class="input_control">
+          <label for="price">Price: </label>
+          <input type="number" name="price" id="price" value="<%= produce[0].price %>"/>
+        </div>
+        <div class="input_control">
+          <select name="category">
+            <% categories.forEach(category => { %>
+                <option value=<%= category.category %>><%= category.category %></option>
+            <% }) %>
+          </select>
+        </div>
+        <div class="input_control">
+          <select name="unit">
+            <option value="bag" selected>Bag</option>
+          </select>
+        </div>
+        <button type="submit">Submit</button>
+      </form>
+    </main>
+    <%- include('partials/footer', {year: year}); %>
+  </body>
+</html>
