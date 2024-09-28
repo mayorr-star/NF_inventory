@@ -16,31 +16,35 @@
             id="cmName"
             placeholder="...cabbage"
           />
+          <p class="error"></p>
         </div>
         <div class="input_control">
           <label for="sciName">Scientific Name: </label>
           <input
-            type="text"
-            name="sciName"
-            id="scName"
-            placeholder="...Brassica oleracea"
+          type="text"
+          name="sciName"
+          id="scName"
+          placeholder="...Brassica oleracea"
           />
+          <p class="error"></p>
         </div>
         <div class="input_control">
-        <select name="land_size">
-          <% landSizes.forEach(landSize => { %>
-            <option value=<%= landSize.area_acres%>><%= landSize.area_acres %></option>
-          <% }) %>
-        </select>
-        </div>
-        <div class="input_control">
-          <label for="numItems">Quantity: </label>
-          <input type="number" name="numItems" id="numItems" />
-        </div>
-        <div class="input_control">
-          <label for="price">Price: </label>
-          <input type="number" name="price" id="price" />
-        </div>
+          <select name="land_size">
+            <% landSizes.forEach(landSize => { %>
+              <option value=<%= landSize.area_acres%>><%= landSize.area_acres %></option>
+              <% }) %>
+            </select>
+          </div>
+          <div class="input_control">
+            <label for="numItems">Quantity: </label>
+            <input type="number" name="numItems" id="numItems" />
+            <p class="error"></p>
+          </div>
+          <div class="input_control">
+            <label for="price">Price: </label>
+            <input type="number" name="price" id="price" />
+            <p class="error"></p>
+          </div>
         <div class="input_control">
           <select name="category">
             <% categories.forEach(category => { %>
