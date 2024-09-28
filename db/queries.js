@@ -102,6 +102,10 @@ const updateProduceItem = async (
   ]);
 };
 
+const insertCategory = async (category) => {
+  await pool.query("INSERT INTO categories (category) VALUES ($1)", [category]);
+}
+
 module.exports = {
   getAllProduce,
   getCategories,
@@ -113,6 +117,7 @@ module.exports = {
   insertProduceIdLandId,
   insertProduceIdCategoryId,
   insertProduceItem,
+  insertCategory,
   deleteProduceItem,
   updateProduceItem,
 };
