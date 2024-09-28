@@ -3,6 +3,7 @@ const express = require("express");
 const path = require('path');
 const produceRouter = require("./routes/produceRouter");
 const indexRouter = require("./routes/index");
+const categoryRouter = require("./routes/categories");
 const handleNotFoundError = require("./utilis/errorhandling/middlewares/notFoundError");
 const handleGlobalError = require("./utilis/errorhandling/middlewares/globalError");
 
@@ -15,6 +16,7 @@ app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 
 app.use("/produce", produceRouter);
+app.use("/categories", categoryRouter);
 app.use("/", indexRouter);
 
 app.use(handleNotFoundError);
