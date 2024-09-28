@@ -1,35 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title><%= produce.common_name %></title>
-    </head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= produce.common_name %></title>
+  </head>
+  <body>
+    <header>
+      <h1><%= produce.common_name %></h1>
+    </header>
     <body>
-        <header>
-            <h1><%= produce.common_name %></h1>
-        </header>
-        <body>
-            <main>
-                <section class="item_section">
-                    <div class="item">
-                        <p><%= produce.common_name %></p>
-                        <p><%= produce.scientific_name %></p>
-                        <p>Qty: <%= produce.count %></p>
-                        <p>Price per<%= produce.unit %>: <%= produce.price %></p>
-                        <p>Category: <%= produce.category %></p>
-                    </div>
-                </section>
-                <section class="forms">
-                    <form action="delete/<%= produce.id %>" method="post">
-                        <button type="submit">Delete</button>
-                    </form>
-                    <form action="/update/<%= produce.id %>" method="post">
-                        <button type="submit">Update</button>
-                    </form>
-                </section>
-            </main>
-            <%- include('partials/footer', {year: year}) %>
-        </body>
+      <main>
+        <section class="item_section">
+          <div class="item">
+            <p><%= produce.common_name %></p>
+            <p><%= produce.scientific_name %></p>
+            <p>Qty: <%= produce.count %></p>
+            <p>Price per<%= produce.unit %>: <%= produce.price %></p>
+            <p>Category: <%= produce.category %></p>
+          </div>
+        </section>
+        <section class="actions">
+          <form action="delete/<%= produce.id %>" method="post">
+            <button type="submit">Delete</button>
+          </form>
+          <a href="/produce/form/update/<%= produce.id%>">
+            <button type="button">Update</button>
+          </a>
+        </section>
+      </main>
+      <%- include('partials/footer', {year: year}) %>
     </body>
+  </body>
 </html>
