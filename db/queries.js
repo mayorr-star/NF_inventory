@@ -8,7 +8,7 @@ const getAllProduce = async () => {
 };
 
 const getCategories = async () => {
-  const { rows } = await pool.query("SELECT category FROM categories");
+  const { rows } = await pool.query("SELECT * FROM categories");
   return rows;
 };
 
@@ -80,6 +80,19 @@ const deleteProduceItem = async (produceId) => {
   await pool.query("DELETE FROM ONLY produce WHERE id = $1", [produceId]);
 };
 
+const deleteCategory = async (categoryId) => {
+  await Promise.all([
+    pool.query("DELETE FROM ONLY categories WHERE id = $1", [categoryId]),
+    await pool.query(
+      "DELETE FROM produce USING produce_category, categories WHERE produce.id = produce_category.produce_id AND produce_category.category_id = categories.id AND categories.id = $1",
+      [categoryId]
+    ),
+    await pool.query("DELETE FROM produce_category WHERE category_id = $1", [
+      categoryId,
+    ]),
+  ]);
+};
+
 const updateProduceItem = async (
   cmName,
   sciName,
@@ -98,13 +111,16 @@ const updateProduceItem = async (
       "UPDATE produce_category SET category_id = $1 WHERE produce_id = $2",
       [categoryId, produceId]
     ),
-    pool.query("UPDATE produce_land SET land_id = $1 WHERE produce_id = $2", [landId, produceId])
+    pool.query("UPDATE produce_land SET land_id = $1 WHERE produce_id = $2", [
+      landId,
+      produceId,
+    ]),
   ]);
 };
 
 const insertCategory = async (category) => {
   await pool.query("INSERT INTO categories (category) VALUES ($1)", [category]);
-}
+};
 
 module.exports = {
   getAllProduce,
@@ -119,5 +135,6 @@ module.exports = {
   insertProduceItem,
   insertCategory,
   deleteProduceItem,
+  deleteCategory,
   updateProduceItem,
 };
