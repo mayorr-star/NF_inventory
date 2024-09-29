@@ -1,29 +1,30 @@
-.nav_links {
-  display: flex;
-}
-
-nav {
+.navbar {
   padding: 10px 20px;
   background-color: #0039a6;
   color: aliceblue;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-nav ul {
+.nav_links {
   display: flex;
   gap: 20px;
 }
 
-nav > form{
-    margin-top: 15px;
+.menu_btn{
+  width: 20px;
+  height: auto;
+  display: none;
 }
 
-nav ul > li {
+
+.nav_links > li {
   list-style-type: none;
 }
 
-nav ul > li > a {
+.nav_links > li > a {
   color: aliceblue;
-  text-decoration: none;
 }
 
 .bor_bottom {
@@ -31,19 +32,18 @@ nav ul > li > a {
   height: 2px;
 }
 
-nav li:hover .bor_bottom {
+.navbar li:hover .bor_bottom {
   background-color: black;
 }
 
 .cm_logo {
-  margin-right: auto;
   display: flex;
   gap: 7px;
   align-items: center;
 }
 
-.cm_logo p{
-    font-size: 1.2rem;
+.cm_logo p {
+  font-size: 1.2rem;
 }
 
 #search {
@@ -58,8 +58,8 @@ nav li:hover .bor_bottom {
 }
 
 #search:focus {
-    border: 3px solid grey;
-    outline: none;
+  border: 3px solid grey;
+  outline: none;
 }
 
 .search_btn {
@@ -70,15 +70,15 @@ nav li:hover .bor_bottom {
   transition: background-color 0.3s ease-in;
 }
 
-.search_btn:hover{
-    background-color: darkgrey;
+.search_btn:hover {
+  background-color: darkgrey;
 }
 
-.search_btn:focus{
-    border: 2px solid grey;
+.search_btn:focus {
+  border: 2px solid grey;
 }
 
-.logo{
-    width: 50px;
-    height: auto;
+.logo {
+  width: 50px;
+  height: auto;
 }
