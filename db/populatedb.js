@@ -1,3 +1,5 @@
+#! /usr/bin/env node
+
 const { Client } = require("pg");
 
 const SQL = `
@@ -115,7 +117,7 @@ const SQL = `
 async function main() {
     console.log('seeding...')
     const client = new Client({
-        connectionString: "postgresql://nana:nana@12@localhost:5432/nanafarms"
+        connectionString: process.argv[2]
     });
     await client.connect();
     await client.query(SQL);
