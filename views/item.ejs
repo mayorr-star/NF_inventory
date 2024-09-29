@@ -4,30 +4,37 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%= produce.common_name %></title>
+    <link rel="stylesheet" href="/styles/global.css" />
+    <link rel="stylesheet" href="/styles/nav.css" />
+    <link rel="stylesheet" href="/styles/footer.css" />
+    <link rel="stylesheet" href="/styles/item.css" />
   </head>
   <body>
-    <header>
+    <%- include('partials/navbar') %>
+    <header class="produce_name">
       <h1><%= produce.common_name %></h1>
     </header>
     <body>
-      <main>
-        <section class="item_section">
-          <div class="item">
-            <p><%= produce.common_name %></p>
-            <p><%= produce.scientific_name %></p>
-            <p>Qty: <%= produce.count %></p>
-            <p>Price per<%= produce.unit %>: <%= produce.price %></p>
-            <p>Category: <%= produce.category %></p>
-          </div>
-        </section>
-        <section class="actions">
-          <form action="delete/<%= produce.id %>" method="post">
-            <button type="submit">Delete</button>
-          </form>
-          <a href="/produce/form/update/<%= produce.id%>">
-            <button type="button">Update</button>
-          </a>
-        </section>
+      <main class="item_content">
+        <div class="content">
+          <section class="item_section">
+            <div class="item">
+              <p><%= produce.common_name %></p>
+              <p><%= produce.scientific_name %></p>
+              <p>Qty: <%= produce.count %></p>
+              <p>Price per <%= produce.unit %>: <%= produce.price %></p>
+              <p>Category: <%= produce.category %></p>
+            </div>
+          </section>
+          <section class="actions">
+            <form action="delete/<%= produce.id %>" method="post">
+              <button type="submit">Delete</button>
+            </form>
+            <a href="/produce/form/update/<%= produce.id%>">
+              <button type="button">Update</button>
+            </a>
+          </section>
+        </div>
       </main>
       <%- include('partials/footer', {year: year}) %>
     </body>
