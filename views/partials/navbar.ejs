@@ -1,9 +1,20 @@
-<navbar>
-  <div class="cm_logo">
-    <p>Nana Farms</p>
-    <img src="" alt="Nana Farms logo" />
+<nav>
+  <div class="nav_links">
+    <div class="cm_logo">
+      <img src="/images/NF_logo.webp" alt="Nana Farms, logo" class="logo">
+      <p>Nana Farms</p>
+    </div>
+    <ul>
+      <li>
+        <a href="/">Home</a>
+        <div class="bor_bottom"></div>
+      </li>
+      <li>
+        <a href="/categories">Categories</a>
+        <div class="bor_bottom"></div>
+      </li>
+    </ul>
   </div>
-  <a href="/categories">Categories</a>
   <form action="/search/:<%=produce.name%>/:<%=produce.id%>" method="get">
     <input
       type="search"
@@ -12,6 +23,6 @@
       placeholder="...apple"
       aria-label="search"
     />
-    <button type="submit">Search</button>
+    <button type="submit" class="search_btn">Search</button>
   </form>
-</navbar>
+</nav>
