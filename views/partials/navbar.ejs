@@ -1,28 +1,26 @@
-<nav>
-  <div class="nav_links">
-    <div class="cm_logo">
-      <img src="/images/NF_logo.webp" alt="Nana Farms, logo" class="logo">
-      <p>Nana Farms</p>
-    </div>
-    <ul>
-      <li>
-        <a href="/">Home</a>
-        <div class="bor_bottom"></div>
-      </li>
-      <li>
-        <a href="/categories">Categories</a>
-        <div class="bor_bottom"></div>
-      </li>
-    </ul>
+<nav class="navbar">
+  <div class="cm_logo">
+    <img src="/images/NF_logo.webp" alt="Nana Farms, logo" class="logo" />
+    <p>Nana Farms</p>
   </div>
-  <form action="/search/:<%=produce.name%>/:<%=produce.id%>" method="get">
+  <form action="/produce/search" method="get">
     <input
       type="search"
       name="search"
       id="search"
-      placeholder="...apple"
+      placeholder="...search"
       aria-label="search"
     />
     <button type="submit" class="search_btn">Search</button>
   </form>
+  <ul class="nav_links">
+    <li>
+      <a href="/">Home</a>
+      <div class="bor_bottom"></div>
+    </li>
+    <li>
+      <a href="/categories">Categories</a>
+      <div class="bor_bottom"></div>
+    </li>
+  </ul>
 </nav>
