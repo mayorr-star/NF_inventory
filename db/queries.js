@@ -49,6 +49,14 @@ const getCategoryId = async (category) => {
   return rows;
 };
 
+const getSearchedProduce = async (name) => {
+  const { rows } = await pool.query(
+    "SELECT produce.id, produce.common_name, produce.scientific_name, produce.count, produce.unit, produce.price, categories.category, landarea.area_acres FROM produce INNER JOIN produce_category ON produce.id = produce_category.produce_id INNER JOIN categories ON produce_category.category_id = categories.id INNER JOIN produce_land ON produce_land.produce_id = produce.id INNER JOIN landarea ON produce_land.land_id = landarea.id WHERE produce.common_name LIKE $1",
+    [`%${name}%`]
+  );
+  return rows;
+};
+
 const insertProduceItem = async (
   common_name,
   scientific_name,
@@ -130,6 +138,7 @@ module.exports = {
   getProduceId,
   getCategoryId,
   getProduce,
+  getSearchedProduce,
   insertProduceIdLandId,
   insertProduceIdCategoryId,
   insertProduceItem,
