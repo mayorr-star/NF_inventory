@@ -1,0 +1,19 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: "riot";
+    src: url(../fonts/ProtestRiot-Regular.ttf);
+}
+
+:root{
+    font-size: 16;
+    font-family: "riot", sans-serif;
+}
+
+button{
+    cursor: pointer;
+}
