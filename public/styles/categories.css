@@ -1,0 +1,78 @@
+.categories_table {
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 0.9rem;
+  border-radius: 5px 5px 0 0;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.categories_table thead tr {
+  background-color: #009879;
+  color: white;
+  text-align: left;
+  font-weight: bold;
+}
+
+.categories_table th,
+.categories_table td {
+  padding: 12px 50px;
+}
+
+.categories_table tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+.categories_table tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+
+.categories_table tbody tr:last-of-type {
+  border-bottom: 2px solid #009879;
+}
+
+.cat_header {
+  text-align: center;
+  padding: 20px 0;
+}
+
+.category_main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.controls_cat button {
+  padding: 5px 40px;
+  font-weight: 700;
+}
+
+.controls_cat {
+  margin-bottom: 25px;
+}
+
+.trash_img{
+  width: 20px;
+  height: auto;
+}
+
+.add_img{
+    width: 25px;
+    height: auto;
+}
+
+.del_btn,
+.add_btn button {
+  background: transparent;
+  border: none;
+  outline: none;
+}
+
+.del_btn, .add_btn img {
+  transition: transform 0.3s ease-in;
+}
+
+.del_btn:hover,
+.add_btn:hover .add_img{
+  transform: scale(1.2);
+}
