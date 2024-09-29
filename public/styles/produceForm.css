@@ -1,0 +1,44 @@
+.form_header{
+    text-align: center;
+    padding: 20px 0;
+}
+
+.new_produce_form{
+    display: flex;
+    justify-content: center;
+}
+
+.new_produce_form form{
+    background-color: #f3f3f3;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.new_produce_form form select{
+    padding: 3px;
+}
+
+.input_control{
+    padding: 10px 0;
+}
+
+.input_control input{
+    padding: 7px 12px;
+    border-radius: 6px;
+}
+
+.input_control label{
+    display: block;
+    margin-bottom: 5px;
+}
+
+.new_produce_form form button{
+    padding: 7px 32px;
+    font-weight: 700;
+    transition: background-color 0.3s ease;
+}
+
+.new_produce_form form button:hover{
+    background-color: white;
+}
