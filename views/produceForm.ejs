@@ -4,9 +4,17 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Product form</title>
+    <link rel="stylesheet" href="/styles/global.css" />
+    <link rel="stylesheet" href="/styles/nav.css" />
+    <link rel="stylesheet" href="/styles/footer.css" />
+    <link rel="stylesheet" href="/styles/produceForm.css">
   </head>
   <body>
-    <main>
+    <%- include('partials/navbar') %>
+    <header class="form_header">
+      <h1>Add Item</h1>
+    </header>
+    <main class="new_produce_form">
       <form action="/produce/add-new-produce" method="post">
         <div class="input_control">
           <label for="cmName">Common Name: </label>
@@ -29,6 +37,7 @@
           <p class="error"></p>
         </div>
         <div class="input_control">
+          <label for="land_size">Land size:</label>
           <select name="land_size">
             <% landSizes.forEach(landSize => { %>
               <option value=<%= landSize.area_acres%>><%= landSize.area_acres %></option>
@@ -46,6 +55,7 @@
             <p class="error"></p>
           </div>
         <div class="input_control">
+          <label for="category">Category:</label>
           <select name="category">
             <% categories.forEach(category => { %>
                 <option value=<%= category.category %>><%= category.category %></option>
@@ -53,6 +63,7 @@
           </select>
         </div>
         <div class="input_control">
+          <label for="unit">Unit:</label>
           <select name="unit">
             <option value="bag" selected>Bag</option>
           </select>
