@@ -7,10 +7,14 @@ const NotFoundError = require("../utilis/errorhandling/errors/NotFoundError");
 const currentYear = getCurrentYear();
 
 const getAllProduce = asyncHandler(async (req, res) => {
-  const [farmProduce, categories] = await Promise.all([
-    await db.getAllProduce(),
-    await db.getCategories(),
-  ]);
+  let farmProduce = null;
+  const categories = await db.getCategories();
+
+  if (req.query.search) {
+    farmProduce = await db.getSearchedProduce(req.query.search);
+  } else {
+    farmProduce = await db.getAllProduce();
+  }
 
   if (!farmProduce || !categories) {
     throw new NotFoundError("Not Found!");
