@@ -4,12 +4,17 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Update Farm Produce</title>
+    <link rel="stylesheet" href="/styles/global.css" />
+    <link rel="stylesheet" href="/styles/nav.css" />
+    <link rel="stylesheet" href="/styles/footer.css" />
+    <link rel="stylesheet" href="/styles/updateForm.css">
   </head>
   <body>
-    <header>
+    <%- include('partials/navbar') %>
+    <header class="form_header">
         <h1>Update <%= produce[0].common_name %> Details</h1>
     </header>
-    <main>
+    <main class="update_form">
       <form action="/produce/update/<%= produce[0].id %>" method="post">
         <div class="input_control">
           <label for="cmName">Common Name: </label>
@@ -32,6 +37,7 @@
           />
         </div>
         <div class="input_control">
+          <label for="land_size">Land size:</label>
         <select name="land_size">
           <% landSizes.forEach(landSize => { %>
             <option value=<%= landSize.area_acres%>><%= landSize.area_acres %></option>
@@ -47,6 +53,7 @@
           <input type="number" name="price" id="price" value="<%= produce[0].price %>"/>
         </div>
         <div class="input_control">
+          <label for="category">Category:</label>
           <select name="category">
             <% categories.forEach(category => { %>
                 <option value=<%= category.category %>><%= category.category %></option>
@@ -54,6 +61,7 @@
           </select>
         </div>
         <div class="input_control">
+          <label for="unit">Unit:</label>
           <select name="unit">
             <option value="bag" selected>Bag</option>
           </select>
