@@ -1,0 +1,28 @@
+<table class="inventory_table">
+    <thead>
+      <tr>
+        <th>Common name</th>
+        <th>Scientific name</th>
+        <th>Count</th>
+        <th>Unit</th>
+        <th>Price</th>
+        <th>Category</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% produce.forEach(item => { %>
+      <tr>
+        <td>
+          <a href="/produce/<%= item.id %>">
+            <%= item.common_name %>
+          </a>
+        </td>
+        <td><%= item.scientific_name %></td>
+        <td><%= item.count %></td>
+        <td><%= item.unit %></td>
+        <td><%= item.price %></td>
+        <td><%= item.category %></td>
+      </tr>
+      <% }); %>
+    </tbody>
+  </table>
