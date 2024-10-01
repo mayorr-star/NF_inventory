@@ -40,6 +40,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  min-height: 434px;
 }
 
 .controls_cat button {
