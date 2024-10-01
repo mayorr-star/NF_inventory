@@ -14,19 +14,6 @@
     <header class="inv_header">
       <h1>Inventory</h1>
       <div class="filter_sort">
-        <select name="category">
-          <% categories.forEach((category) => { %>
-          <option value="<%= category.category %>"
-            ><%= category.category %>
-          </option>
-          <% }); %>
-        </select>
-        <select name="sort">
-          <option value="name" selected>Name</option>
-          <option value="count">Count</option>
-          <option value="land">Land</option>
-        </select>
-      </div>
       <a href="/produce/form/add-new-produce">
         <button type="button" class="add_btn">Add new item</button>
       </a>
