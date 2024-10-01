@@ -3,24 +3,13 @@
   background-color: #0039a6;
   color: aliceblue;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
 }
 
 .nav_links {
   display: flex;
-  gap: 20px;
-}
-
-.menu_btn{
-  width: 20px;
-  height: auto;
-  display: none;
-}
-
-
-.nav_links > li {
-  list-style-type: none;
+  gap: 0.9rem;
 }
 
 .nav_links > li > a {
@@ -39,11 +28,19 @@
 .cm_logo {
   display: flex;
   gap: 7px;
-  align-items: center;
+}
+
+.cm_logo .img {
+  max-width: 30px;
+}
+
+.cm_logo .img > img {
+  width: 100%;
+  height: auto;
 }
 
 .cm_logo p {
-  font-size: 1.2rem;
+  align-self: end;
 }
 
 #search {
@@ -76,9 +73,4 @@
 
 .search_btn:focus {
   border: 2px solid grey;
-}
-
-.logo {
-  width: 50px;
-  height: auto;
 }
