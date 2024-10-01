@@ -15,18 +15,18 @@
   font-weight: 900;
 }
 
-.inventory {
-  display: flex;
-  justify-content: center;
-}
-
 .inventory_table {
   border-collapse: collapse;
   margin: 25px 0;
   font-size: 0.9rem;
   border-radius: 5px 5px 0 0;
-  overflow: hidden;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.table_wrapper {
+  overflow-x: auto;
+  display: grid;
+  place-items: center;
 }
 
 .inventory_table a {
@@ -35,10 +35,10 @@
   transition: background-color 0.3s ease-in;
 }
 
-.inventory_table a:hover{
-    background-color: #009879;
-    padding: 7px;
-    color: white;
+.inventory_table a:hover {
+  background-color: #009879;
+  padding: 7px;
+  color: white;
 }
 
 .inventory_table thead tr {
