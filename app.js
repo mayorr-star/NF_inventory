@@ -24,4 +24,4 @@ app.use("/", indexRouter);
 app.use(handleNotFoundError);
 app.use(handleGlobalError);
 
-app.listen(PORT, () => console.log(`Server running on ${PORT}`));
+app.listen(PORT, '0.0.0.0', () => console.log(`Server running on ${PORT}`));
